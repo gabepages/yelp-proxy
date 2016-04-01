@@ -1,8 +1,7 @@
 {
- "name": "brewaround",
+ "name": "brewProxy",
  "version": "0.0.1",
  "description": "A sample Node.js app using Express 4 for finding breweries",
- "main": "js/bundle.js",
  "private": true,
  "engines": {
    "node": ">=0.10.0"
@@ -12,7 +11,7 @@
    "url": "https://github.com/annaimpson/breweryDB-proxy"
  },
  "scripts": {
-   "start": "node js/bundle.js"
+   "start": "node app/node/app.js"
  },
 
 "dependencies": {
@@ -26,8 +25,5 @@
     "node",
     "heroku",
     "express"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/annaimpson/breweryDB-proxy"
-  },
+  ]
+}
