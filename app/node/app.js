@@ -16,6 +16,11 @@ app.get('/api', function(req, res){ // listens for request on /api route
     }
    });
 });
+
+app.get('/test', function(req, res){ // listens for request on /api route
+ console.log('working!');
+ res.send('working!'); // if no errors, send the body of data back to front end
+});
 ​
 var port = process.env.PORT || 3000;
 app.listen(port);
