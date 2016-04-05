@@ -1,7 +1,7 @@
 {
-  "name": "BrewProxy",
-  "description": "BreweryDB Proxy",
-  "repository": "https://github.com/annaimpson/breweryDB-proxy",
+  "name": "YelpProxy",
+  "description": "Yelp Proxy",
+  "repository": "https://github.com/gabepages/yelp-proxy",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["node", "express", "static"],
   "image": "heroku/nodejs"

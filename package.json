@@ -1,17 +1,17 @@
 {
- "name": "brewProxy",
+ "name": "yelp",
  "version": "0.0.1",
- "description": "A sample Node.js app using Express 4 for finding breweries",
+ "description": "A sample Node.js app using Express 4 for yelp",
  "private": true,
  "engines": {
    "node": ">=0.10.0"
  },
  "repository": {
    "type": "git",
-   "url": "https://github.com/annaimpson/breweryDB-proxy"
+   "url": "https://github.com/gabepages/yelp-proxy"
  },
  "scripts": {
-   "start": "node app/node/app.js"
+   "start": "node index.js"
  },
 
 "dependencies": {
@@ -19,7 +19,8 @@
     "install": "^0.5.6",
     "npm": "^3.8.0",
     "request": "^2.69.0",
-    "cors": "^2.7.0"
+    "cors": "^2.7.0",
+    "yelp": "^1.0.1"
   },
   "keywords": [
     "node",
