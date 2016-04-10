@@ -25,8 +25,7 @@ app.get('/food', function(req, res){ // listens for request on /food route
      radius_filter: radius
   })
   .then(function (data) {
-    var number = _.random(20);
-    console.log(number);
+  
     res.send(data.businesses);
   })
   .catch(function (err) {
