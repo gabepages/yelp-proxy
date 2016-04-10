@@ -24,7 +24,7 @@ app.get('/food', function(req, res){ // listens for request on /food route
      radius_filter: radius
   })
   .then(function (data) {
-    res.send(data);
+    res.send(data.businesses);
   })
   .catch(function (err) {
     console.error(err);
