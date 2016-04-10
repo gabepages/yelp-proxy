@@ -2,6 +2,7 @@ var express = require('express');
 var request = require('request');
 var app = express();
 var cors = require('cors');
+var _ = require('underscore');
 
 app.use(cors()); //allows overriding cross origin policy (use npm install if needed)
 
@@ -24,6 +25,8 @@ app.get('/food', function(req, res){ // listens for request on /food route
      radius_filter: radius
   })
   .then(function (data) {
+    var number = _.random(20);
+    console.log(number);
     res.send(data.businesses);
   })
   .catch(function (err) {
