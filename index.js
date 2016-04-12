@@ -12,7 +12,7 @@ var yelp = new Yelp({
   token: 'PwtCgTe9HjOvXnmtnso-pRr8impN_Qxu',
   token_secret: 'tXy1U-oNYvwUcfS--JyLNfo_Rg8',
 });
-
+var Chance = require('chance');
 
 app.get('/result', function(req, res){ // listens for request on /food route
   var term = req.query.term; // grabs lat and lng queries from the request object
@@ -24,7 +24,24 @@ app.get('/result', function(req, res){ // listens for request on /food route
      radius_filter: radius
   })
   .then(function (data) {
-    res.send(data.businesses);
+    var chance = new Chance();
+    var total = data.total;
+    total = total - 1;
+    var offset = chance.natural({min: 0, max: total});
+    // yelp.search w/ limit 1 and offset = random # - 1
+    yelp.search({
+       term: term,
+       location: location,
+       radius_filter: radius,
+       limit: 1,
+       offset: offset
+    })
+    .then(function (data) {
+      res.send(data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
   })
   .catch(function (err) {
     console.error(err);
@@ -41,9 +58,27 @@ app.get('/bars', function(req, res){ // listens for request on /food route
      term: term,
      location: location,
      radius_filter: radius
+
   })
   .then(function (data) {
-    res.send(data.businesses);
+    var chance = new Chance();
+    var total = data.total;
+    total = total - 1;
+    var offset = chance.natural({min: 0, max: total});
+    // yelp.search w/ limit 1 and offset = random # - 1
+    yelp.search({
+       term: term,
+       location: location,
+       radius_filter: radius,
+       limit: 1,
+       offset: offset
+    })
+    .then(function (data) {
+      res.send(data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
   })
   .catch(function (err) {
     console.error(err);
@@ -61,7 +96,24 @@ app.get('/clubs', function(req, res){ // listens for request on /food route
      radius_filter: radius
   })
   .then(function (data) {
-    res.send(data.businesses);
+    var chance = new Chance();
+    var total = data.total;
+    total = total - 1;
+    var offset = chance.natural({min: 0, max: total});
+    // yelp.search w/ limit 1 and offset = random # - 1
+    yelp.search({
+       term: term,
+       location: location,
+       radius_filter: radius,
+       limit: 1,
+       offset: offset
+    })
+    .then(function (data) {
+      res.send(data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
   })
   .catch(function (err) {
     console.error(err);
