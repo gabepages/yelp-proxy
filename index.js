@@ -33,6 +33,44 @@ app.get('/result', function(req, res){ // listens for request on /food route
 });
 
 
+app.get('/result/bars', function(req, res){ // listens for request on /food route
+  var term = req.query.term; // grabs lat and lng queries from the request object
+  var location = req.query.location;
+  var radius = req.query.radius_filter;
+  yelp.search({
+     term: term,
+     location: location,
+     radius_filter: radius,
+     category_filter:beachbars,beerbar,champagne_bars,cocktailbars,hookah_bars,irish_pubs,sakebars,whiskeybars,wine_bars,pianobars,jazzandblues,karaoke,dancerestaurants
+  });
+  .then(function (data) {
+    res.send(data.businesses);
+  })
+  .catch(function (err) {
+    console.error(err);
+  });
+
+});
+
+app.get('/result/clubs', function(req, res){ // listens for request on /food route
+  var location = req.query.location;
+  var radius = req.query.radius_filter;
+  yelp.search({
+     term: Dance Clubs,
+     location: location,
+     radius_filter: radius
+  });
+  .then(function (data) {
+    res.send(data.businesses);
+  })
+  .catch(function (err) {
+    console.error(err);
+  });
+
+});
+
+
+
 app.get('/test', function(req, res){ // listens for request on /api route
  console.log('working!');
  res.send('working!'); // if no errors, send the body of data back to front end
