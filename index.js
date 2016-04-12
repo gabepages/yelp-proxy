@@ -33,7 +33,7 @@ app.get('/result', function(req, res){ // listens for request on /food route
 });
 
 
-app.get('/result/bars', function(req, res){ // listens for request on /food route
+app.get('/bars', function(req, res){ // listens for request on /food route
   var term = req.query.term;
   var location = req.query.location;
   var radius = req.query.radius_filter;
@@ -52,7 +52,7 @@ app.get('/result/bars', function(req, res){ // listens for request on /food rout
 
 });
 
-app.get('/result/clubs', function(req, res){ // listens for request on /food route
+app.get('/clubs', function(req, res){ // listens for request on /food route
   var term = req.query.term;
   var location = req.query.location;
   var radius = req.query.radius_filter;
