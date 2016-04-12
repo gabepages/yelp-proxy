@@ -38,10 +38,10 @@ app.get('/result/bars', function(req, res){ // listens for request on /food rout
   var location = req.query.location;
   var radius = req.query.radius_filter;
   yelp.search({
-     term: term,
+     term: "Bars",
      location: location,
      radius_filter: radius,
-     category_filter:beachbars,beerbar,champagne_bars,cocktailbars,hookah_bars,irish_pubs,sakebars,whiskeybars,wine_bars,pianobars,jazzandblues,karaoke,dancerestaurants
+     category_filter:"beachbars,beerbar,champagne_bars,cocktailbars,hookah_bars,irish_pubs,sakebars,whiskeybars,wine_bars,pianobars,jazzandblues,karaoke,dancerestaurants"
   });
   .then(function (data) {
     res.send(data.businesses);
@@ -56,7 +56,7 @@ app.get('/result/clubs', function(req, res){ // listens for request on /food rou
   var location = req.query.location;
   var radius = req.query.radius_filter;
   yelp.search({
-     term: Dance Clubs,
+     term: "Dance+Clubs",
      location: location,
      radius_filter: radius
   });
