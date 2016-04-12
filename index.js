@@ -22,6 +22,7 @@ app.get('/food', function(req, res){ // listens for request on /food route
      term: term,
      location: location,
      radius_filter: radius
+     category_filter:"food"
   })
   .then(function (data) {
     var chance = new Chance();
