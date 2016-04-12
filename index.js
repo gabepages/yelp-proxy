@@ -14,7 +14,7 @@ var yelp = new Yelp({
 });
 var Chance = require('chance');
 
-app.get('/result', function(req, res){ // listens for request on /food route
+app.get('/food', function(req, res){ // listens for request on /food route
   var term = req.query.term; // grabs lat and lng queries from the request object
   var location = req.query.location;
   var radius = req.query.radius_filter;
@@ -49,6 +49,41 @@ app.get('/result', function(req, res){ // listens for request on /food route
 
 });
 
+app.get('/outdoors', function(req, res){ // listens for request on /food route
+  var term = req.query.term; // grabs lat and lng queries from the request object
+  var location = req.query.location;
+  var radius = req.query.radius_filter;
+  yelp.search({
+     term: term,
+     location: location,
+     radius_filter: radius,
+     category_filter:"active,parks,beaches,hiking"
+  })
+  .then(function (data) {
+    var chance = new Chance();
+    var total = data.total;
+    total = total - 1;
+    var offset = chance.natural({min: 0, max: total});
+    // yelp.search w/ limit 1 and offset = random # - 1
+    yelp.search({
+       term: term,
+       location: location,
+       radius_filter: radius,
+       limit: 1,
+       offset: offset
+    })
+    .then(function (data) {
+      res.send(data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+  })
+  .catch(function (err) {
+    console.error(err);
+  });
+
+});
 
 app.get('/bars', function(req, res){ // listens for request on /food route
   var term = req.query.term;
