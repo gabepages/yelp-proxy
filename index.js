@@ -98,7 +98,11 @@ app.get('/bars', function(req, res){ // listens for request on /food route
   .then(function (data) {
     var chance = new Chance();
     var total = data.total;
-    total = total - 1;
+    if(total <= 30){
+      total = total - 1;
+    }else{
+      total = total / 2;
+    }
     var offset = chance.natural({min: 0, max: total});
     // yelp.search w/ limit 1 and offset = random # - 1
     yelp.search({
