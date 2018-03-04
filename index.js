@@ -35,9 +35,20 @@ app.get('/yelp', function(req, res){ // listens for request on /food route
       total = total / 2;
     }
     var offset = chance.natural({min: 0, max: total});
-    var result = data.businesses[offset];
-    res.send(result);
-  
+    // yelp.search w/ limit 1 and offset = random # - 1
+    yelp.search({
+       term: term,
+       location: location,
+       radius_filter: radius,
+       limit: 1,
+       offset: offset
+    })
+    .then(function (data) {
+      res.send(data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
   })
   .catch(function (err) {
     console.error(err);
@@ -49,7 +60,7 @@ app.get('/yelp', function(req, res){ // listens for request on /food route
 
 app.get('/test', function(req, res){ // listens for request on /api route
  console.log('working!');
- res.send('working, new test!'); // if no errors, send the body of data back to front end
+ res.send('working!'); // if no errors, send the body of data back to front end
 });
 
 var port = process.env.PORT || 3000;
