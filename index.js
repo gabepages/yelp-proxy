@@ -35,20 +35,9 @@ app.get('/yelp', function(req, res){ // listens for request on /food route
       total = total / 2;
     }
     var offset = chance.natural({min: 0, max: total});
-    // yelp.search w/ limit 1 and offset = random # - 1
-    yelp.search({
-       term: term,
-       location: location,
-       radius_filter: radius,
-       limit: 1,
-       offset: offset
-    })
-    .then(function (data) {
-      res.send(data);
-    })
-    .catch(function (err) {
-      console.error(err);
-    });
+    var result = data.businesses[offset];
+    res.send(result);
+  
   })
   .catch(function (err) {
     console.error(err);
